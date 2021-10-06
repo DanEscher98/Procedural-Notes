@@ -1,6 +1,7 @@
 # Prerequisites
 *.d
 
+<<<<<<< HEAD
 # Object files
 *.o
 *.ko
@@ -12,11 +13,19 @@
 *.ilk
 *.map
 *.exp
+=======
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+>>>>>>> 2169ba690c36d9927543dacda869728a0538e45c
 
 # Precompiled Headers
 *.gch
 *.pch
 
+<<<<<<< HEAD
 # Libraries
 *.lib
 *.a
@@ -28,11 +37,28 @@
 *.so
 *.so.*
 *.dylib
+=======
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+>>>>>>> 2169ba690c36d9927543dacda869728a0538e45c
 
 # Executables
 *.exe
 *.out
 *.app
+<<<<<<< HEAD
 *.i*86
 *.x86_64
 *.hex
@@ -51,3 +77,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+=======
+>>>>>>> 2169ba690c36d9927543dacda869728a0538e45c
