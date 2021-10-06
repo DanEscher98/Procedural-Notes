@@ -1,4 +1,4 @@
-TARGET 	= hello
+TARGET 	= hello2
 FLAGS	= -f elf64 -g -F dwarf -l $(TARGET).lst
 
 
