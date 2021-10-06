@@ -5,7 +5,7 @@ BITS 64
 ; Constants
 ; ##############################
 section .data
-	message: db "Hello, world", 0xa ; const char * message
+	message: db "Hello, world", 0xa, 0 ; const char * message
 	length:	 equ $-message		; int length = len(message)==12
 
 
