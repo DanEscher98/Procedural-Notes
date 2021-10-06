@@ -8,6 +8,7 @@
 *.obj
 *.elf
 *.ll
+*.out
 
 # Linker output
 *.ilk
@@ -68,6 +69,7 @@
 *.su
 *.idb
 *.pdb
+*.lst
 
 # Kernel Module Compile Results
 *.mod*
