@@ -1,4 +1,4 @@
-TARGET 	= hello2
+TARGET 	= move
 FLAGS	= -f elf64 -g -F dwarf -l $(TARGET).lst
 
 
