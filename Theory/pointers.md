@@ -22,3 +22,16 @@ title: Pointers in C
 *(*(ch_arr + i) + j);
 ch_arr[i][j];
 ```
+
+```cpp
+// Equivalent accessing
+*(ptr + n) = val;
+ptr[n] = val;
+
+// Equivalent for structs
+(*node).next;
+node->next;
+
+// Declare a reference
+int& num;
+```

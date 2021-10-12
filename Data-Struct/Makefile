@@ -1,12 +1,13 @@
-FLAGS    = -Wall -Wextra -pedantic
-TARGET   = linked_list1
-LIBRARYS = matrix_algebra.c safe_io.c
+TARGET		= forward_linked_list
+FLAGS_CPP	= -Wall -Wextra -pedantic -std=c++17
+#FLAGS_C    = -Wall -Wextra -pedantic
+#LIBRARYS 	= matrix_algebra.c safe_io.c
 
-$(TARGET).out : $(TARGET).c $(LIBRARYS)
-	clang $(TARGET).c -o $(TARGET).out $(LIBRARYS) $(FLAGS)
+$(TARGET).out : $(TARGET).cpp $(LIBRARYS)
+	clang $(TARGET).cpp -o $(TARGET).out $(FLAGS)
 
 run: $(TARGET).out
 	./$(TARGET).out
 
-clean:
+clear:
 	rm *.out
