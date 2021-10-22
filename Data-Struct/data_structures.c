@@ -32,8 +32,8 @@ node initNode(void) {
 list initList(void) {
 	list new_list = (list){
 		.length = 0,
-		.head = node_size };
-	new_list.head = NULL;
+		.head = NULL
+	};
 	return new_list;
 }
 
@@ -60,8 +60,11 @@ node *deleteThisNode(node *a) {
 node *insertNode(node *head, int value) {
 	node new_node = initNode();
 	new_node.data = value;
-	new_node.next = head->next;
+	if (head != NULL) {
+		new_node.next = head->next;
+	}
 	head = &new_node;
+	printf("Inserted value: %d - ", head->data);
 	return head;
 }
 
@@ -69,6 +72,7 @@ node *insertNode(node *head, int value) {
 
 int headList(list ls) {
 	if (ls.head == NULL) {
+		printf("Empty list doesn't have head.\n");
 		exit (1);
 	} else {
 		return ls.head->data;
@@ -108,6 +112,11 @@ list appendData(list ls, int value) {
 		head = getNextNode(head);
 	}
 	head = insertNode(head, value);
+	if (ls.length == 0) {
+		printf("First value for a empty list.");
+		ls.head = head;
+	}
+	printf("Append value: %d\n", ls.head->data);
 	ls.length++;
 	return ls;
 }
@@ -164,9 +173,9 @@ void printList(list ls) {
 	while (head != NULL) {
 		printf("%d", head->data);
 		head = head->next;
-		printf(" → ");
+		if (head != NULL) printf(" → ");
 	}
-	printf(")");
+	printf(")\n");
 }
 
 // Conversion
