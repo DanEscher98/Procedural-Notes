@@ -122,7 +122,9 @@ list appendData(list ls, int value) {
 }
 
 list pushData(list ls, int value) {
+	node **init = &ls.head;
 	insertNode(ls.head, value);
+	ls.head = *init;
 	ls.length++;
 	return ls;
 }
