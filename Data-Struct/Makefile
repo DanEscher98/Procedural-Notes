@@ -1,4 +1,4 @@
-TARGET		= forward_linked_list
+TARGET		= main
 FLAGS_CPP	= -Wall -Wextra -pedantic -std=c++17
 #FLAGS_C    = -Wall -Wextra -pedantic
 #LIBRARYS 	= matrix_algebra.c safe_io.c
