@@ -64,7 +64,8 @@ node *insertNode(node *head, int value) {
 		new_node.next = head->next;
 	}
 	head = &new_node;
-	printf("Inserted value: %d - ", head->data);
+	printf("Addr of Inserted Node: %p - Value: %d\n", head, head->data);
+	//printf("Inserted value: %d - ", head->data);
 	return head;
 }
 
@@ -108,23 +109,27 @@ list deleteNodeInPosition(list ls, int position) {
 
 list appendData(list ls, int value) {
 	node *head = ls.head;
+	printf("A  - List Head Addr: %p - Length: %d\n", ls.head, ls.length);
+	printf("A' - Head poisition: %p\n", head);
 	for (int i=0; i < ls.length; i++) {
 		head = getNextNode(head);
 	}
 	head = insertNode(head, value);
 	if (ls.length == 0) {
-		printf("First value for a empty list.");
+		//printf("First value for a empty list.");
 		ls.head = head;
 	}
-	printf("Append value: %d\n", ls.head->data);
+	printf("B  - List Head Addr: %p - Value: %d\n", ls.head, ls.head->data);
+	printf("B' - Head poisition: %p\n\n", head);
+	//printf("Append value: %d\n", ls.head->data);
 	ls.length++;
 	return ls;
 }
 
 list pushData(list ls, int value) {
-	node **init = &ls.head;
+	node *init = ls.head;
 	insertNode(ls.head, value);
-	ls.head = *init;
+	ls.head = init;
 	ls.length++;
 	return ls;
 }

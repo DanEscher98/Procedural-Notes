@@ -5,11 +5,14 @@
 int main(void) {
 	list ls_a = initList();
 	printf("OK-0\n");
-	ls_a = pushData(ls_a, 1);
-	ls_a = pushData(ls_a, 2);
-	ls_a = pushData(ls_a, 3);
+	ls_a = appendData(ls_a, 1);
+	ls_a = appendData(ls_a, 2);
+	ls_a = appendData(ls_a, 3);
 	printList(ls_a);
-	printf("First value: %d\n", headList(ls_a));
+	if (ls_a.head->next == NULL) {
+		printf("There is no next\n");
+	}
+	//printf("First value: %d\n", headList(ls_a));
 	printf("List length: %d\n", ls_a.length);
 	return 0;
 }
