@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
-//#include "data_structures.h"
-#include "basic_algorithms.h"
+#include "data_structures.h"
 
 //#####################################
 //## Vector Functions #################
@@ -54,12 +53,11 @@ node *deleteThisNode(node *a) {
 }
 
 void freeList(list ls) {
-	node *aux, *head = ls.head;
+	node *head = ls.head;
 	while (head) {
-		aux = head->next;
-		free(head);
-		head = aux;
+		head = deleteThisNode(head);
 	}
+	ls.length = 0;
 }
 
 node *newNode(node *link, int value) {
@@ -82,50 +80,45 @@ int headList(list ls) {
 }
 
 list insertNodeInPosition(list ls, int position, int value) {
-	node *head = ls.head;
-	while (position > 0) {
-		position--;
-		head = getNextNode(head);
+	node *new_node = newNode(NULL, value);
+	if (position > 1) {
+		node *init = ls.head;
+		node *head = init;
+		// Fix and remove the patch !!
+		while (position - 1 > 1 && head->next != NULL) {
+			position--;
+			head = getNextNode(head);
+		}
+		new_node->next = head->next;
+		head->next = new_node;
+		ls.head = init;
+	} else {
+		new_node->next = ls.head;
+		ls.head = new_node;
 	}
-	head = newNode(head, value);
 	ls.length++;
 	return ls;
 }
 
 list deleteNodeInPosition(list ls, int position) {
 	node *head = ls.head;
-	if (head == NULL && ls.length == 0) {
-		return ls;
-	} else {
-		while (position != 0) {
+	if (position > 1) {
+		while (position - 1 > 1 && head->next != NULL) {
+			head = getNextNode(head);
 			position--;
-			head = head->next;
 		}
-		head = deleteThisNode(head);
-		ls.length--;
-		return ls;
+		head->next = deleteThisNode(head->next);
+	} else {
+		ls.head = deleteThisNode(head);
 	}
-	printf("Error: %d => %s\n",
-			errno, strerror(errno));
-	exit (1);
+	ls.length--;
+	return ls;
 }
 
 list prependData(list ls, int value) {
 	ls.head = newNode(ls.head, value);
 	ls.length++;
 	return ls;
-}
-
-node *newNodeAfter(node *link, int value) {
-	node *new_node = newNode(NULL, value);
-	if (!new_node) return NULL;
-	if (!link) return new_node;
-	node *last = link;
-	while (last->next != NULL) {
-		last = getNextNode(last);
-	}
-	last->next = new_node;
-	return link;
 }
 
 list appendData(list ls, int value) {
@@ -143,27 +136,6 @@ list appendData(list ls, int value) {
 		return ls;
 	}
 }
-
-//list appendData(list ls, int value) {
-//	node *head = ls.head;
-//	//for (int i=0; i < ls.length-1; i++) {
-//	//	head = getNextNode(head);
-//	//}
-//	printList(ls);
-//	while(head != NULL) {
-//		printf("Address of head: %p\n", &head);
-//		head = getNextNode(head);
-//	}
-//	head = newNode(head, value);
-//	printf("Last value: %d\n", head->value);
-//	if (valueInList(ls, value)) {
-//		printf("Append Success!\n");
-//	} else {
-//		printf("Append Fail :/\n");
-//	}
-//	ls.length++;
-//	return ls;
-//}
 
 // Miscellaneous
 
@@ -197,8 +169,6 @@ void printList(list ls) {
 	node *head = ls.head;
 	printf("(");
 	while (head != NULL) {
-		//printf("\tValue: %d\t", head->value);
-		//printf("\tAddress: %p\n", head);
 		printf("%d", head->value);
 		head = getNextNode(head);
 		if (head != NULL) printf(" → ");

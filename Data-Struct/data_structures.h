@@ -37,6 +37,8 @@ node *newNodeAfter(node*, int);
 
 int headList(list);
 
+void freeList(list);
+
 list deleteNodeInPosition(list, int);
 
 list insertNodeInPosition(list, int, int);

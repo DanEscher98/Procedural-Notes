@@ -14,15 +14,18 @@ int main(void) {
 	printList(ls_a);
 	ls_a = appendData(ls_a, 10);
 	printList(ls_a);
-	//ls_a = appendData(ls_a, 10);
-	//printf("New length: %d\n", ls_a.length);
-	//vector vec = initVector(ls_a.length);
-	//vec = listToVector(ls_a);
-	//printVector(vec);
-	//node *a_head = ls_a.head;
-	//ls_a.head = deleteThisNode(ls_a.head);
-	//printf("Deleted value %d\n", a_head->value);
-	//printf("The next value: %d\n",
-	//		getNextNode(ls_a.head)->value);
+	ls_a = insertNodeInPosition(ls_a, 5, 100);
+	printf("New Length: %d\n", ls_a.length);
+	printList(ls_a);
+	ls_a = deleteNodeInPosition(ls_a, 8);
+	printList(ls_a);
+	ls_a = appendData(ls_a, 10);
+	printf("New length: %d\n", ls_a.length);
+	vector vec = initVector(ls_a.length);
+	vec = listToVector(ls_a);
+	printVector(vec);
+	vec.values[2] = 115;
+	printList(vectorToList(vec));
+	freeList(ls_a);
 	return 0;
 }
