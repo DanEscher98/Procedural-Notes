@@ -6,21 +6,22 @@ typedef struct Vector {
 	int length;
 } vector;
 
+vector initVector(int);
+
 //#####################################
 //## List Functions ###################
 
 typedef struct Node {
-	int data;
+	int value;
 	struct Node *next;
 } node;
 
 typedef struct List {
-	node *head;
 	int length;
+	node *head;
 } list;
 
 // Dynamic memory allocation
-node initNode(void);
 
 list initList(void);
 
@@ -28,7 +29,9 @@ node *getNextNode(node*);
 
 node *deleteThisNode(node*);
 
-node *insertNode(node*, int);
+node *newNode(node*, int);
+
+node *newNodeAfter(node*, int);
 
 // Basic operations
 
@@ -40,7 +43,7 @@ list insertNodeInPosition(list, int, int);
 
 list appendData(list, int);
 
-list pushData(list, int);
+list prependData(list, int);
 
 // Miscellaneous
 

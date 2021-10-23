@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
-#include <string.h>
-//#include "data_structures.h"
-#include "basic_algorithms.h"
+#include "data_structures.h"
 
 //#####################################
 //## Vector Functions #################
@@ -23,6 +20,15 @@ vector initVector(int length) {
 // Dynamic memory allocation
 
 #define node_size (node*)malloc(sizeof(node))
+
+//node initNode(void) {
+//	node new_node = (node){
+//		.value = 0,
+//		.next = node_size
+//	};
+//	new_node.next = NULL;
+//	return new_node;
+//}
 
 list initList(void) {
 	list new_list = (list){
@@ -53,16 +59,7 @@ node *deleteThisNode(node *a) {
 	exit (1);
 }
 
-void freeList(list ls) {
-	node *aux, *head = ls.head;
-	while (head) {
-		aux = head->next;
-		free(head);
-		head = aux;
-	}
-}
-
-node *newNode(node *link, int value) {
+node *newNode(int value, node *link) {
 	node *new_node = node_size;
 	if (!new_node) return NULL;
 	new_node->value = value;
@@ -70,11 +67,23 @@ node *newNode(node *link, int value) {
 	return new_node;
 }
 
+//node *insertNode(node *head, int value) {
+//	node new_node = initNode();
+//	new_node.data = value;
+//	if (head != NULL) {
+//		new_node.next = head->next;
+//	}
+//	head = &new_node;
+//	printf("Addr of Inserted Node: %p - Value: %d\n", head, head->data);
+//	//printf("Inserted value: %d - ", head->data);
+//	return head;
+//}
+
 // Basic operations
 
 int headList(list ls) {
 	if (ls.head == NULL) {
-		perror("Empty list doesn't have head");
+		printf("Empty list doesn't have head.\n");
 		exit (1);
 	} else {
 		return ls.head->value;
@@ -87,7 +96,7 @@ list insertNodeInPosition(list ls, int position, int value) {
 		position--;
 		head = getNextNode(head);
 	}
-	head = newNode(head, value);
+	head = insertNode(head, value);
 	ls.length++;
 	return ls;
 }
@@ -105,73 +114,42 @@ list deleteNodeInPosition(list ls, int position) {
 		ls.length--;
 		return ls;
 	}
-	printf("Error: %d => %s\n",
-			errno, strerror(errno));
 	exit (1);
 }
 
-list prependData(list ls, int value) {
-	ls.head = newNode(ls.head, value);
+list appendData(list ls, int value) {
+	node *head = ls.head;
+	printf("A  - List Head Addr: %p - Length: %d\n", ls.head, ls.length);
+	printf("A' - Head poisition: %p\n", head);
+	for (int i=0; i < ls.length; i++) {
+		head = getNextNode(head);
+	}
+	head = insertNode(head, value);
+	if (ls.length == 0) {
+		//printf("First value for a empty list.");
+		ls.head = head;
+	}
+	printf("B  - List Head Addr: %p - Value: %d\n", ls.head, ls.head->data);
+	printf("B' - Head poisition: %p\n\n", head);
+	//printf("Append value: %d\n", ls.head->data);
 	ls.length++;
 	return ls;
 }
 
-node *newNodeAfter(node *link, int value) {
-	node *new_node = newNode(NULL, value);
-	if (!new_node) return NULL;
-	if (!link) return new_node;
-	node *last = link;
-	while (last->next != NULL) {
-		last = getNextNode(last);
-	}
-	last->next = new_node;
-	return link;
+list pushData(list ls, int value) {
+	node *init = ls.head;
+	insertNode(ls.head, value);
+	ls.head = init;
+	ls.length++;
+	return ls;
 }
-
-list appendData(list ls, int value) {
-	node *new_node = newNode(NULL, value);
-	if (!ls.head) return (list){ 
-		.length = 1, 
-		.head = new_node
-	}; else {
-		node *head = ls.head;
-		while (head->next) {
-			head = getNextNode(head);
-
-		}
-		head->next = new_node;
-		ls.length++;
-		return ls;
-	}
-}
-
-//list appendData(list ls, int value) {
-//	node *head = ls.head;
-//	//for (int i=0; i < ls.length-1; i++) {
-//	//	head = getNextNode(head);
-//	//}
-//	printList(ls);
-//	while(head != NULL) {
-//		printf("Address of head: %p\n", &head);
-//		head = getNextNode(head);
-//	}
-//	head = newNode(head, value);
-//	printf("Last value: %d\n", head->value);
-//	if (valueInList(ls, value)) {
-//		printf("Append Success!\n");
-//	} else {
-//		printf("Append Fail :/\n");
-//	}
-//	ls.length++;
-//	return ls;
-//}
 
 // Miscellaneous
 
 list deleteValue(list ls, int value) {
 	node *head = ls.head;
 	while (head != NULL) {
-		if (head->value == value) {
+		if (head->data == value) {
 			head = deleteThisNode(head);
 			ls.length--;
 		} else {
@@ -179,6 +157,18 @@ list deleteValue(list ls, int value) {
 		}
 	}
 	return ls;
+}
+
+int valueInList(list ls, int value) {
+	node *head = ls.head;
+	while (head != NULL) {
+		if (head->data == value) {
+			return 1;
+		} else {
+			head = getNextNode(head);
+		}
+	}
+	return 0;
 }
 
 //#####################################
@@ -198,10 +188,8 @@ void printList(list ls) {
 	node *head = ls.head;
 	printf("(");
 	while (head != NULL) {
-		//printf("\tValue: %d\t", head->value);
-		//printf("\tAddress: %p\n", head);
-		printf("%d", head->value);
-		head = getNextNode(head);
+		printf("%d", head->data);
+		head = head->next;
 		if (head != NULL) printf(" → ");
 	}
 	printf(")\n");
@@ -213,8 +201,7 @@ vector listToVector(list ls) {
 	node *head = ls.head;
 	vector new_vector = initVector(ls.length);
 	for (int i=0; i<ls.length; i++) {
-		if (head == NULL) exit(1);
-		new_vector.values[i] = head->value;
+		new_vector.values[i] = head->data;
 		head = getNextNode(head);
 	}
 	return new_vector;
