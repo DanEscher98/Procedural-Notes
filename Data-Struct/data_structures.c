@@ -88,10 +88,12 @@ list insertNodeInPosition(list ls, int position, int value) {
 			position--;
 			head = getNextNode(head);
 		}
+		// The new node is inserted
 		new_node->next = head->next;
 		head->next = new_node;
 		ls.head = init;
 	} else {
+		// The node is prepended
 		new_node->next = ls.head;
 		ls.head = new_node;
 	}
@@ -100,6 +102,7 @@ list insertNodeInPosition(list ls, int position, int value) {
 }
 
 list deleteNodeInPosition(list ls, int position) {
+	// Similar to insertNodeInPosition
 	node *head = ls.head;
 	if (position > 1) {
 		while (position - 1 > 1 && head->next != NULL) {
@@ -122,6 +125,7 @@ list prependData(list ls, int value) {
 
 list appendData(list ls, int value) {
 	node *new_node = newNode(NULL, value);
+	// A initialized structure is returned
 	if (!ls.head) return (list){ 
 		.length = 1, 
 		.head = new_node
