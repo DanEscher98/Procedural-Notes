@@ -137,7 +137,6 @@ list appendData(list ls, int value) {
 		node *head = ls.head;
 		while (head->next) {
 			head = getNextNode(head);
-
 		}
 		head->next = new_node;
 		ls.length++;
