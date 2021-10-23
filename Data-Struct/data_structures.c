@@ -46,8 +46,7 @@ node *deleteThisNode(node *a) {
 	} else {
 		node *aux = getNextNode(a);
 		free(a);
-		a = aux;
-		return a;
+		return aux;
 	}
 	exit (1);
 }
@@ -137,20 +136,6 @@ list appendData(list ls, int value) {
 	}
 }
 
-// Miscellaneous
-
-list deleteValue(list ls, int value) {
-	node *head = ls.head;
-	while (head != NULL) {
-		if (head->value == value) {
-			head = deleteThisNode(head);
-			ls.length--;
-		} else {
-			head = getNextNode(head);
-		}
-	}
-	return ls;
-}
 
 //#####################################
 //## Convert and Validation Functions #
@@ -167,13 +152,17 @@ void printVector(vector vec) {
 
 void printList(list ls) {
 	node *head = ls.head;
-	printf("(");
-	while (head != NULL) {
-		printf("%d", head->value);
+	printf(" ( ");
+	for (int count=1; head != NULL; count++) {
+		printf("%4d", head->value);
 		head = getNextNode(head);
+		if (count > 10) {
+			count = 0;
+			printf("\n");
+		}
 		if (head != NULL) printf(" → ");
 	}
-	printf(")\n");
+	printf(" )\n");
 }
 
 // Conversion

@@ -47,26 +47,6 @@ list appendData(list, int);
 
 list prependData(list, int);
 
-// Miscellaneous
-
-list deleteValue(list, int);
-
-//list reverseList(list);
-
-int valueInList(list, int);
-
-//list sortList(list);
-
-// Set related functions
-
-//list concatenationList(list, list);
-//
-//list complementList(list, list);
-//
-//list differenceList(list, list);
-//
-//list intersectionList(list, list);
-
 
 //#####################################
 //## Binary Tree Functions ############
