@@ -76,6 +76,7 @@ target/
 *.mod*
 *.cmd
 .tmp_versions/
+target/
 modules.order
 Module.symvers
 Mkfile.old
