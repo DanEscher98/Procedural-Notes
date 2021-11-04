@@ -1,0 +1,17 @@
+[package]
+name = "toomany_linkedlists"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[profile.release]
+#cargo-features = ["strip"]
+opt-level = 'z'     # Optimize for size.
+lto = true          # Enable Link Time Optimization
+codegen-units = 1   # Reduce number of codegen units to increase optimizations.
+panic = 'abort'     # Abort on panic
+#strip = true
+# cli to force dynamically link: -C prefer-dynamic

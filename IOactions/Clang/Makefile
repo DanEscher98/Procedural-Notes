@@ -1,6 +1,6 @@
-TARGET		= hash_main
-FLAGS	    = -Wall -Wextra -pedantic
-LIBRARYS 	= hash_structures.c libraries/safe_io.c
+TARGET		= main
+FLAGS	    = -Wall -Wextra -pedantic -std=c99
+LIBRARYS 	= 
 
 $(TARGET).out : $(TARGET).c $(LIBRARYS)
 	clang $(TARGET).c $(LIBRARYS) -o $(TARGET).out $(FLAGS)
