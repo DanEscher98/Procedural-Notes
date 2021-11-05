@@ -12,6 +12,38 @@ self        // Value (owner change)
 &self       // Shared reference (only read)
 ```
 
+## Ownership rules
+
+1. Each value in `Rust` has a variable that's called its owner.
+2. There can only be one owner at a time.
+3. When the owner goes out of scope, the value will be dropped.
+
+## The Rules of References
+
+1. At any given time, you can have either one mutable reference or any
+   number of immutable references.
+2. References must always be valid.
+
+## Lifetime rules
+
+1. Each parameter that is a reference gets its own lifetime parameter.
+2. If there is exactly one input lifetime parameter, that lifetime is
+   assigned to all output lifetime parameters.
+3. If there are multiple input lifetime parameters, but one of them is
+    `&self` or `&mut self` the lifetime of self is assigned to all
+    output lifetime parameters.
+
+```rust
+let x: i32 = 10;
+let y: i32 = x; // Copy
+
+let s1: String = String::from("hello");
+let s2: String = s1; // Move (not shallow copy)
+//               s1.copy() // Fix the error, allocates in heap
+
+println!("{}, world!", s1); // Error
+```
+
 ## Lifetime
 
 Let people take pointers to random data on the stack, and the result
