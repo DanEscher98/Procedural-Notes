@@ -52,6 +52,21 @@ shared memory for efficient communication between the threads. The
 true value of threading lies in being able to write multi-CPU
 programs, in which different computational tasks can share memory.
 
+> Asyncio provides another tool for concurrent programming in Python,
+> that is more lightweight than threads or multiprocessing. In a very
+> simple sens it does this by having an event loop execute a
+> collection of tasks, with a key difference being that each task
+> chooses when to yield control back to the event loop.
+>   -- Philip Jones, "Understanding Asyncio"
+
+The main features that end users should care about are a small
+subset of the whole asyncio API:
+- Starting the asyncio event loop
+- Calling `async/await` functions
+- Creating a task to be run on the loop
+- Waiting for multiple tasks to complete
+- Closing the loop after all concurrent tasks have completed
+
 ### Things that Asyncio is not
 
 - Asyncio doesn't make a code blazing fast
