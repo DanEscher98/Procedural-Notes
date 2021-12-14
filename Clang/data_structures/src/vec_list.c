@@ -52,6 +52,8 @@ void freeList(list ls)
 	while (head) {
 		head = deleteThisNode(head);
 	}
+	// free(ls.head);
+	// ls.head = NULL;
 	ls.length = 0;
 }
 

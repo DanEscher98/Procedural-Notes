@@ -10,10 +10,11 @@ run: $(TARGET).out
 	./target/$(TARGET).out $(USER)
 
 test.out: test/tests.c
-	$(CC) test/tests.c $(HEADERS) -o target/tests.out
+	$(CC) test/tests.c $(HEADERS) -g -o target/tests.out
 
 test: test.out
-	./target/tests.out
+	valgrind -s --leak-check=full target/tests.out 2> target/mem_analysis.log
+	cat target/mem_analysis.log
 
 clear:
 	rm -f target/*.out
