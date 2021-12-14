@@ -17,5 +17,5 @@ test: test.out
 	cat target/mem_analysis.log
 
 clear:
-	rm -f target/*.out
+	rm -f target/*.out target/*.log
 	clear && ls
