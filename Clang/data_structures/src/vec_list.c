@@ -41,8 +41,7 @@ vector initVector(int length, bool zeros, bool sorted)
 
 list initList(void)
 {
-	list new_list = (list) { .length = 0, .head = node_size };
-	new_list.head = NULL;
+	list new_list = (list) { .length = 0, .head = NULL };
 	return new_list;
 }
 
