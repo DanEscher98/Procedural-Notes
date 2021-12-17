@@ -1,4 +1,4 @@
-#include "../src/vec_list.h"
+#include "vec_list.h"
 #include <clove.h>
 
 CLOVE_TEST(InitVector)
