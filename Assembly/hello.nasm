@@ -22,8 +22,8 @@ section .text
 global main
 main:
 ; write(1, message, length)
-mov rax, write			; system call for write
-mov rdi, stdout			; making file handle stdout
+mov rax, 1				; system call for write
+mov rdi, 1				; making file handle stdout
 mov rsi, message		; passing address of string to output
 mov rdx, length			; number of bytes
 syscall					; invoking os to write
