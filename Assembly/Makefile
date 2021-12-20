@@ -1,4 +1,4 @@
-TARGET 	= move
+TARGET	= move
 FLAGS	= -f elf64 -g -F dwarf -l $(TARGET).lst
 
 
@@ -16,4 +16,4 @@ objdump: $(TARGET).out
 	objdump -D $(TARGET).out
 
 clear:
-	rm *.out *.o *.lst
+	rm -f *.out *.o *.lst
