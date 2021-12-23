@@ -7,7 +7,7 @@ $(TARGET).out: src/$(TARGET).c
 	$(CC) src/$(TARGET).c $(FLAGS) $(HEADERS) -o target/$(TARGET).out
 
 run: $(TARGET).out
-	./target/$(TARGET).out $(USER)
+	python3 test/inputs.py | xargs -I % ./target/$(TARGET).out %
 
 test.out: test/tests.c
 	$(CC) test/tests.c $(HEADERS) $(FLAGS) -g -o target/tests.out
