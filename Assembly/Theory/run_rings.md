@@ -14,7 +14,7 @@ privileged rings is an oddity of x86, most other CPUs only have two
 modes (supervisor and user).
 
 Negative rings are *conceptual* levels of privilege, not actual
-processor protection rings.
+processor protection rings. Positive rings are implemented in hardware
 
 ## The Rings
 
@@ -64,6 +64,32 @@ x86 inside a x86. His functions are:
 ### **Silicon:**
 
 
+## Intel Architecture
+
+- Segment Descriptor: It describes the memory segment referred to in
+    the logical address. The segment descriptor (8 bytes long in
+    80286 and later) contains the following fields:
+    - A segment base address
+    - The segment limit which specifies the segment size
+    - Access rights byte containing the protection mechanism information
+    - Control bits
+- Procedure Call Types: The processor supports two ways:
+    - `CALL` and `RET` instructions.
+    - `ENTER` and `LEAVE` instructions.
+- Interrupts and Exceptions: The processor provides two mechanisms for
+    interrupting program execution:
+    - An **interrupt** is an asynchronous event that is typically
+        triggered by I/O device.
+    - An **exception** is a synchronous event that is generated when
+        the processor detects one or more predefined conditions while
+        executing an instruction. The Intel architecture specifies
+        three classes of exceptions: *faults*, *traps* and *aborts*.
+- Some Interrupts:
+    - SCI: System Control Interrupt
+    - SMI: System Management Interrupt
+    - NMI: Non-maskable Interrupt
+    - Normal Interrupt: handled through IDT with vector 0~255
+
 ## Glossary of Acronyms
 
 - AMD: Advanced Micro Devices
@@ -71,12 +97,10 @@ x86 inside a x86. His functions are:
 - DPL: Descriptor Privilege Level
 - GPF: General Protection Fault
 - IA: Intel Architecture
+- IDT: Interrupt Descriptor Table
 - ME: Intel Management Engine
 - PSP: Platform Secure Processor, the AMD equivalent of ME
 - SMI: System Management Interrupt
 - SMM: System Management Mode
 
-## Concepts
 
-- Segment Descriptor Table
-    -
