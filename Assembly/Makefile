@@ -1,4 +1,4 @@
-TARGET	= hello
+TARGET	= template
 FLAGS	= -f elf64 -g -F dwarf -l $(TARGET).lst
 
 
@@ -7,7 +7,7 @@ $(TARGET).out : $(TARGET).o
 	# ld $(TARGET).o -o $(TARGET).out
 
 $(TARGET).o : $(TARGET).nasm
-	nasmfmt -ii 4 -ci 30 $(TARGET).nasm
+	# nasmfmt -ii 4 -ci 30 $(TARGET).nasm
 	nasm $(TARGET).nasm -o $(TARGET).o $(FLAGS)
 
 run: $(TARGET).out
