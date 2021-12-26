@@ -1,5 +1,6 @@
 TARGET	= template
 FLAGS	= -f elf64 -g -F dwarf -l $(TARGET).lst
+TEXFLAGS = --interaction=nonstopmode
 
 
 $(TARGET).out : $(TARGET).o
@@ -16,6 +17,10 @@ run: $(TARGET).out
 objdump: $(TARGET).out
 	objdump -D $(TARGET).out
 
+pdf: Theory/syscalls.tex
+	pdflatex $(TEXFLAGS) Theory/syscalls.tex \
+		-o Theory/syscalls.pdf 1> /dev/null
+
 clear:
-	rm -f *.out *.o *.lst
+	rm -rf *.out *.o *.lst *.aux *.log
 	clear && exa

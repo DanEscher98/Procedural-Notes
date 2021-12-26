@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage[legalpaper, margin=1in, landscape]{geometry}
+\usepackage{blindtext}
+\usepackage{booktabs}
+\usepackage{minted}
+\usepackage{xparse}
+
+\NewDocumentCommand{\code}{v}{\mintinline{c}{#1}}
+
+\begin{document}
+\begin{center}
+	\begin{tabular}{|| l p{4cm} | l l l l l l l ||}\toprule
+		SysCall               & Description                                               & \code{rax}                  & \code{rdi}
+		                      & \code{rsi}                                                & \code{rdx}                  & \code{r10}
+		                      & \code{r8}                                                 & \code{r9}
+		\\ [0.5ex] \midrule
+		\code{read}           & read from a file descriptor                               & 0
+		                      & \code{unsigned int fd}                                    & \code{char *buf}            & \code{size_t count}        &  &  & \\
+		\code{write}          & write to a file descriptor                                & 1
+		                      & \code{unsigned int fd}                                    & \code{const char *buf}      & \code{size_t count}        &  &  & \\
+		\code{open}           & open a file or device                                     & 2
+		                      & \code{const char *filename}                               & \code{int flags}            & \code{int mode}            &  &  & \\
+		\code{close}          & close a file descriptor                                   & 3
+		                      & \code{unsigned int fd}                                    &                             &                            &  &  & \\
+		\code{stat}           & get file status                                           & 4
+		                      & \code{const char *filename}                               & \code{struct stat *statbuf} &                            &  &  & \\
+		\code{fstat}          & get file status                                           & 5
+		                      & \code{unsigned int fd}                                    & \code{struct stat *statbuf} &                            &  &  & \\
+		\code{lstat}          & get file status                                           & 6
+		                      & \code{fconst char *filename}                              & \code{struct stat *statbuf} &                            &  &  & \\
+		\code{poll}           & wait for some event on a file descriptor                  & 7
+		                      & \code{struct poll_fd *ufds}                               & \code{unsigned int nfds}    & \code{long timeout_msecs}  &  &  & \\
+		\code{lseek}          & reposition read/write file offset                         & 8
+		                      & \code{unsigned int fd}                                    & \code{off_t offset}         & \code{unsigned int origin} &  &  & \\
+		\code{mmap}           & map pages of memory                                       & 9
+		                      & \code{unsigned long addr}                                 & \code{unsigned long len}    & \code{unsigned long prot}
+		                      & \code{unsigned long flags}                                & \code{unsigned long fd}     & \code{unsigned long off}           \\
+		\code{mprotect}       & set protection of memory mapping                          & 10
+		                      & \code{unsigned long start}                                & \code{size_t len}           & \code{unsigned long prot}  &  &  & \\
+		\code{munmap}         & unmap pages of memory                                     & 11
+		                      & \code{unsigned long addr}                                 & \code{size_t len}           &                            &  &  & \\
+		\code{brk}            & change data segment size                                  & 12
+		                      & \code{unsigned long brk}                                  &                             &                            &  &  & \\
+		\code{rt_sigaction}   & examine and change a signal action                        & 13
+		                      &                                                           &                             &                            &  &  & \\
+		\code{rt_sigprocmask} & examine and change blocked signals                        & 14
+		                      &                                                           &                             &                            &  &  & \\
+		\code{rt_sigreturn}   & return from signal handler and cleanup stack frame        & 15
+		                      &                                                           &                             &                            &  &  & \\
+		\code{ioctl}          & control device                                            & 16
+		                      &                                                           &                             &                            &  &  & \\
+		\code{pread64}        & read from or write to a file descriptor at a given offset & 17
+		                      &                                                           &                             &                            &  &  & \\
+		\code{cmd}            & a description                                             & n
+		                      &                                                           &                             &                            &  &  & \\
+
+		\code{cmd}            & a description                                             & n
+		                      &                                                           &                             &                            &  &  & \\[1ex]
+		\bottomrule
+	\end{tabular}
+\end{center}
+\end{document}

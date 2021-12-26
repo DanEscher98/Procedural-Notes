@@ -102,5 +102,3 @@ x86 inside a x86. His functions are:
 - PSP: Platform Secure Processor, the AMD equivalent of ME
 - SMI: System Management Interrupt
 - SMM: System Management Mode
-
-
