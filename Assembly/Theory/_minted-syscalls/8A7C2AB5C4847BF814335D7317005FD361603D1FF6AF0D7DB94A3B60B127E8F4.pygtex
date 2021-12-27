@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{fconst} \PYG{k+kt}{char} \PYG{o}{*}\PYG{n}{filename}
+\end{Verbatim}

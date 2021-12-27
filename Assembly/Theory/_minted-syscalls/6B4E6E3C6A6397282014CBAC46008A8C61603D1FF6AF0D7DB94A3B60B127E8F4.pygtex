@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{struct} \PYG{n+nc}{poll\PYGZus{}fd} \PYG{o}{*}\PYG{n}{ufds}
+\end{Verbatim}

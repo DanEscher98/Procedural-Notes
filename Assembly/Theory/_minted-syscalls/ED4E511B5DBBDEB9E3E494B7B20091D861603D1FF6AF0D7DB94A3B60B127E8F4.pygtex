@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{struct} \PYG{n+nc}{stat} \PYG{o}{*}\PYG{n}{statbuf}
+\end{Verbatim}
