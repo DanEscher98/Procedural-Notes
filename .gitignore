@@ -1,7 +1,6 @@
 # Prerequisites
 *.d
 
-<<<<<<< HEAD
 # Object files
 *.o
 *.ko
@@ -14,13 +13,12 @@
 *.ilk
 *.map
 *.exp
-=======
+
 # Compiled Object files
 *.slo
 *.lo
 *.o
 *.obj
->>>>>>> 2169ba690c36d9927543dacda869728a0538e45c
 
 # Precompiled Headers
 *.gch
@@ -53,7 +51,6 @@
 *.la
 *.a
 *.lib
->>>>>>> 2169ba690c36d9927543dacda869728a0538e45c
 
 # Executables
 *.exe
@@ -75,11 +72,12 @@ target/
 # Kernel Module Compile Results
 *.mod*
 *.cmd
+*.aux
+*.log
 .tmp_versions/
 target/
 modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-=======
->>>>>>> 2169ba690c36d9927543dacda869728a0538e45c
+_*/
