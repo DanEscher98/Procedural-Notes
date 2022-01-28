@@ -1,12 +1,6 @@
 fn main() {
-    use Instructions::{PUSH, ADD, SUB};
-    let program: Vec<Instructions> = vec![
-        PUSH(3),
-        PUSH(4),
-        ADD,
-        PUSH(5),
-        SUB
-    ];
+    use Instructions::{ADD, PUSH, SUB};
+    let program: Vec<Instructions> = vec![PUSH(3), PUSH(4), ADD, PUSH(5), SUB];
     let eval = virtual_machine(program);
     println!("Program eval: {}", eval);
 }
@@ -14,7 +8,7 @@ fn main() {
 enum Instructions {
     PUSH(u32),
     ADD,
-    SUB
+    SUB,
 }
 
 fn virtual_machine(program: Vec<Instructions>) -> u32 {
@@ -23,7 +17,7 @@ fn virtual_machine(program: Vec<Instructions>) -> u32 {
 
     for current_instruction in program.iter() {
         match current_instruction {
-            Instructions::PUSH(val) => { 
+            Instructions::PUSH(val) => {
                 stack.push(*val);
                 stack_pointer += 1;
             }

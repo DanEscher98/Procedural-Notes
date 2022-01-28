@@ -6,13 +6,14 @@
 //#include "libraries/safe_io.h"
 #define node_size (node*)malloc(sizeof(node))
 
-int main(void) {
+int main(void)
+{
 	srand(time(NULL));
 	list ls_a = initList();
 	list ls_b = initList();
-	int size = 10+rand()%100;
-	for (int i=0; i<size; i++) {
-		ls_a = prependData(ls_a, rand()%(size/2));
+	int size = 10 + rand() % 100;
+	for (int i = 0; i < size; i++) {
+		ls_a = prependData(ls_a, rand() % (size / 2));
 	}
 	ls_b = deleteValue(ls_a, 5);
 	printList(ls_a);
