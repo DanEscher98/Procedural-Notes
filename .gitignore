@@ -75,6 +75,7 @@ target/
 *.aux
 *.log
 .tmp_versions/
+.ccls-cache/
 target/
 modules.order
 Module.symvers
