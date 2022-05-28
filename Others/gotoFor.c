@@ -10,6 +10,7 @@
 int main(void) {
 	ciclo(int i=0, i<5, i++, printf("%d ", i));
 	printf("My goto loooop!\n");
+	int x = (2 < 3) ? 1 : 5;
 	return EXIT_SUCCESS;
 }
 

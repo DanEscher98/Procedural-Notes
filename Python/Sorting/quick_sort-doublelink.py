@@ -1,25 +1,27 @@
 head = None
 
+
 class Node:
-    def __init__(self,data):
+    def __init__(self, data):
         self.data = data
         self.next = None
         self.prev = None
 
 
 def last_node(node):
-    while(node.next != None):
+    while node.next != None:
         node = node.next
     return node
 
+
 def partition(low, high):
     # set pivot as h element
-    x = h.data
+    x = high.data
     i = low.prev
     j = low
 
-    while(j != h):
-        if(j.data <= x):
+    while j != high:
+        if j.data <= x:
             # similar to i++ for array
             i = low if (i == None) else i.next
             temp = i.data
@@ -33,6 +35,5 @@ def partition(low, high):
     high.data = temp
     return i
 
-# a recursive implementation of QuickSort for linked list
 
-def
+# a recursive implementation of QuickSort for linked list

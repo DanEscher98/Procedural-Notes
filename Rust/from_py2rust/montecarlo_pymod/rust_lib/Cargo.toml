@@ -1,0 +1,11 @@
+[package]
+name = "montecarlo_pymod"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = "0.8.5"			# Random number generators and other randomness functionality. 
+num-format = "0.4.0"	# A Rust crate for producing string-representations of numbers, formatted according to internatio…
+num_cpus = "1.13.1"		# Get the number of CPUs on a machine.
