@@ -2,6 +2,7 @@
 \usepackage[legalpaper, margin=0.75cm, landscape]{geometry}
 \usepackage[table]{xcolor}
 \usepackage{xcolor}
+\usepackage{tabularx}
 \usepackage{blindtext}
 \usepackage{booktabs}
 \usepackage{hyperref}
@@ -41,7 +42,7 @@
 
 \begin{center}
 	\rowcolors{1}{}{lightgray}
-	\begin{tabular}{|| l p{4cm} | l l l l l l l ||}\toprule
+	\begin{tabularx}{\textwidth}{|| l p{4cm} | l l l l l l l ||}\toprule
 		SysCall               & Description                                               & \code{rax}                         & \code{rdi}
 		                      & \code{rsi}                                                & \code{rdx}                         & \code{r10}
 		                      & \code{r8}                                                 & \code{r9}
@@ -152,7 +153,7 @@
 		\code{cmd}            & a description                                             & n
 		                      &                                                           &                                    &                               &  &  & \\[1ex]
 		\bottomrule
-	\end{tabular}
+	\end{tabularx}
 \end{center}
 
 \section*{References}

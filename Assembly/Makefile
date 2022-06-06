@@ -1,4 +1,4 @@
-TARGET	= template
+TARGET	= usr_input
 FLAGS	= -f elf64 -g -F dwarf -l $(TARGET).lst
 TEXFLAGS = --interaction=nonstopmode
 
@@ -8,8 +8,8 @@ $(TARGET).out : $(TARGET).o
 	# ld $(TARGET).o -o $(TARGET).out
 
 $(TARGET).o : $(TARGET).nasm
-	# nasmfmt -ii 4 -ci 30 $(TARGET).nasm
 	nasm $(TARGET).nasm -o $(TARGET).o $(FLAGS)
+	# nasmfmt -ii 4 -ci 30 $(TARGET).nasm
 
 run: $(TARGET).out
 	./$(TARGET).out

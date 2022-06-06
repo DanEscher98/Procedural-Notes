@@ -1,5 +1,4 @@
-TARGET	= syscalls
-FLAGS	= -f elf64 -g -F dwarf -l $(TARGET).lst
+TARGET	= multitable
 TEXFLAGS = --interaction=nonstopmode -shell-escape
 
 
