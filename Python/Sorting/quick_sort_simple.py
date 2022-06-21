@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-
+""" Some sorting functions """
+from typing import List, Tuple
 
 # The main function that implements QuickSort
 # arr[] -> Array to be sorted,
@@ -7,7 +8,9 @@
 # high -> Ending index
 
 
-def quick_sort(arr):
+def quick_sort(arr: List | Tuple) -> List:
+    """Implementation of quicksort"""
+
     def partition(arr, low, high):
         i = low - 1
         pivot = arr[high]
@@ -19,17 +22,18 @@ def quick_sort(arr):
         arr[i + 1], arr[high] = arr[high], arr[i + 1]
         return i + 1
 
-    def aux_loop(arr, low, high):
+    def aux_loop(arr, low, high) -> List:
         if len(arr) == 1:
             return arr
         if low < high:
             pivot = partition(arr, low, high)
-            aux_loop(arr, low, pivot - 1)
-            aux_loop(arr, pivot + 1, high)
+            arr = aux_loop(arr, low, pivot - 1)
+            arr = aux_loop(arr, pivot + 1, high)
+        return arr
 
-    aux_loop(arr, 0, len(arr) - 1)
+    return aux_loop(arr, 0, len(arr) - 1)
 
 
-arr = [10, 7, 8, 9, 0, 1]
-quick_sort(arr)
-print(arr)
+data = (10, 7, 8, 9, 0, 1)
+data = quick_sort(data)
+print(data)

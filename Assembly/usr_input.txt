@@ -1,0 +1,54 @@
+	BITS     64
+	%include "std_macros.nasm"
+
+	%macro print 2
+	mov    rax, 1
+	mov    rdi, 1
+	mov    rsi, %1
+	mov    rdx, %2
+	syscall
+	%endmacro
+
+	section .bss
+	name    resb 16
+
+	section .data
+	NL      equ 0xa
+	text1   db "What is your name?: ", 13, 0
+	len1    equ $-text1-1
+	text2   db "Hello, ", 0
+	len2    equ $-text2-1
+
+	section .text
+	global  main
+
+main:
+	Prelude
+	;    MAIN CODE
+	call _printText1
+	call _getName
+	call _printText2
+	call _printName
+	;    ---------
+	Epilogue
+	Exit
+
+_printText1:
+	print text1, len1
+	ret
+
+_getName:
+	mov rax, 0; syscall read
+	mov rdi, 0; fd stdin
+	mov rdi, name; buffer
+	mov rdx, 16; size
+	syscall
+	ret
+
+_printText2:
+	print text2, len2
+	ret
+
+_printName:
+	print name, 16
+	ret
