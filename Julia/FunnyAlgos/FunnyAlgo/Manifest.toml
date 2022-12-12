@@ -1,0 +1,10 @@
+# This file is machine-generated - editing it directly is not advised
+
+julia_version = "1.8.3"
+manifest_format = "2.0"
+project_hash = "dfde85034dd49b227f3cc0c6a313296d407f4095"
+
+[[deps.FastPrimeSieve]]
+git-tree-sha1 = "a71061b72e8f533c73353e017d8a01242d693253"
+uuid = "715f0e73-5d43-4f21-b094-9019e1b56aa3"
+version = "0.1.0"
