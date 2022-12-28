@@ -1,6 +1,8 @@
-run CMD:
+build:
   cd target && cmake .. && make
-  ./target/basiclayout -n "{{CMD}}"
+
+run NAME NUM:
+  ./target/basiclayout -n "{{NAME}}" -t "{{NUM}}"
 
 deps:
   git submodule add https://github.com/fmtlib/fmt extern/fmt

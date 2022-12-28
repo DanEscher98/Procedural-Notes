@@ -8,6 +8,7 @@ auto parseArgs(int argc, char* argv[]) -> Args {
   );
   options.add_options()
     ("n,name", "Name to greet", cxxopts::value<std::string>())
+    ("t,threads", "Number of threads", cxxopts::value<int>())
     ("h,help", "Print this help message");
 
   auto result = options.parse(argc, argv);
@@ -18,6 +19,12 @@ auto parseArgs(int argc, char* argv[]) -> Args {
   }
   if (result.count("name")) {
     args.name = result["name"].as<std::string>();
+  }
+  if (result.count("threads")) {
+    args.num = result["threads"].as<int>();
+  } else {
+    std::cout << options.help() << std::endl;
+    std::exit(0);
   }
   return args;
 }

@@ -8,7 +8,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/target)
 
 project(basiclayout CXX)
 # Set the source files and executable
-add_executable(basiclayout src/main.cpp src/cli.cpp)
+add_executable(basiclayout src/main.cpp src/cli.cpp src/lib.cpp)
 
 # Add cxxopts library
 add_subdirectory(extern/cxxopts)

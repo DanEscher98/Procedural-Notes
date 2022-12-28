@@ -7,6 +7,7 @@
 
 struct Args {
   std::optional<std::string> name;
+  int num;
 };
 
 auto parseArgs(int argc, char* argv[]) -> Args;
