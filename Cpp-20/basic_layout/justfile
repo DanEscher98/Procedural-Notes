@@ -1,0 +1,7 @@
+run CMD:
+  cd target && cmake .. && make
+  ./target/basiclayout -n "{{CMD}}"
+
+deps:
+  git submodule add https://github.com/fmtlib/fmt extern/fmt
+  git submodule add https://github.com/jarro2783/cxxopts extern/cxxopts

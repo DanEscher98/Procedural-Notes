@@ -1,0 +1,9 @@
+[submodule "Cpp-20/basic_layout/extern/cxxopts"]
+	path = Cpp-20/basic_layout/extern/cxxopts
+	url = https://github.com/jarro2783/cxxopts
+[submodule "Cpp-20/basic_layout/extern/tclap"]
+	path = Cpp-20/basic_layout/extern/tclap
+	url = https://github.com/mirror/tclap
+[submodule "Cpp-20/basic_layout/extern/fmt"]
+	path = Cpp-20/basic_layout/extern/fmt
+	url = https://github.com/fmtlib/fmt
