@@ -1,9 +1,0 @@
-build:
-  cd target && cmake .. && make
-
-run NAME NUM:
-  ./target/basiclayout -n "{{NAME}}" -t "{{NUM}}"
-
-deps:
-  git submodule add https://github.com/fmtlib/fmt extern/fmt
-  git submodule add https://github.com/jarro2783/cxxopts extern/cxxopts

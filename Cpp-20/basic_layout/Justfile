@@ -1,0 +1,35 @@
+set shell := ["bash", "-c"]
+
+# build a CMake project
+build:
+  @cmake -S . -B build
+  hyperfine -r 1 --show-output 'cmake --build build'
+
+# build and run tests
+tests:
+  @cmake -S . -B build -DBUILD_TESTING=ON
+  hyperfine -r 1 --show-output 'cmake --build build'
+  @echo ""
+  @./target/unittests
+
+# generate 'compile_commands.json' for LSP
+cmds:
+  @cmake -S . -B build
+  @cd build && make -B compile_commands.json
+  @mv build/compile_commands.json ./
+
+# generate and open the docs
+docs:
+  @doxygen Doxygen 1>/dev/null
+  firefox docs/html/index.html &
+  
+# clean build/
+clean:
+  @rm -rf build/*
+  @rm -rf target/*
+  @rm -rf docs/*
+
+# install dependencies
+deps:
+  git clone https://github.com/fmtlib/fmt.git extern/
+  git clone https://github.com/jarro2783/cxxopts.git extern/

@@ -1,4 +1,4 @@
-TARGET	= multitable
+TARGET	= syscalls
 TEXFLAGS = --interaction=nonstopmode -shell-escape
 
 

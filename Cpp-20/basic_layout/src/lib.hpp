@@ -1,5 +1,6 @@
-#include <thread>
-#include <random>
-#include <chrono>
-
-void say_hello(int thread_num);
+#pragma once
+#include <fmt/core.h>
+#include <fmt/color.h>
+#include <iostream>
+#include <string>
+#include <optional>
