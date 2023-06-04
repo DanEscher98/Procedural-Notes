@@ -1,3 +1,5 @@
-extern/*
+extern/
 target/
 build/
+.cache/
+compile_commands.json
