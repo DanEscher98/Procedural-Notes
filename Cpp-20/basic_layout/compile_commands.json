@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/build",
+  "command": "/usr/bin/c++  -I/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/extern -I/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/extern/cxxopts/include -I/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/extern/fmt/include  -Wall -Wextra -Wpedantic -Os  -fcxx-modules -std=gnu++20 -o CMakeFiles/mytemplate.dir/src/main.cpp.o -c /home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/src/main.cpp",
+  "file": "/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/src/main.cpp",
+  "output": "CMakeFiles/mytemplate.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/build",
+  "command": "/usr/bin/c++  -I/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/extern -I/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/extern/cxxopts/include -I/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/extern/fmt/include  -Wall -Wextra -Wpedantic -Os  -fcxx-modules -std=gnu++20 -o CMakeFiles/mytemplate.dir/src/utils.cppm.o -c /home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/src/utils.cppm",
+  "file": "/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/src/utils.cppm",
+  "output": "CMakeFiles/mytemplate.dir/src/utils.cppm.o"
+},
+{
+  "directory": "/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/build/extern/fmt",
+  "command": "/usr/bin/c++  -I/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/extern/fmt/include  -Wall -Wextra -Wpedantic -Os  -fcxx-modules -std=gnu++20 -o CMakeFiles/fmt.dir/src/format.cc.o -c /home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/extern/fmt/src/format.cc",
+  "file": "/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/extern/fmt/src/format.cc",
+  "output": "extern/fmt/CMakeFiles/fmt.dir/src/format.cc.o"
+},
+{
+  "directory": "/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/build/extern/fmt",
+  "command": "/usr/bin/c++  -I/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/extern/fmt/include  -Wall -Wextra -Wpedantic -Os  -fcxx-modules -std=gnu++20 -o CMakeFiles/fmt.dir/src/os.cc.o -c /home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/extern/fmt/src/os.cc",
+  "file": "/home/dany98/Working/Notes-Procedural/Cpp-20/basic_layout/extern/fmt/src/os.cc",
+  "output": "extern/fmt/CMakeFiles/fmt.dir/src/os.cc.o"
+}
+]
