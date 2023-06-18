@@ -1,0 +1,31 @@
+set shell := ["bash", "-c"]
+VIEWER := 'eog --single-window'
+
+# Simulates the given Verilog file
+run FILE:
+  @NAME=$(basename {{FILE}} .v); mkdir -p build; \
+  iverilog -o build/$NAME.vvp $NAME.v; \
+  vvp build/$NAME.vvp
+  @mv *.vcd build/
+
+# The Verilog testb must dump a VCD
+wave VCD:
+  gtkwave build/{{VCD}}.vcd
+
+# Outputs an SVG from a JSON netlist
+draw NAME:
+  @mkdir -p img build
+  @yosys -p "prep -top {{NAME}}; write_json build/{{NAME}}.json" {{NAME}}.v |\
+    awk '/2\.12/,/2\.13/{if ($0 !~ /2\.13/) print}'
+  @netlistsvg build/{{NAME}}.json -o img/{{NAME}}.svg
+
+# A handy watchdog to re-draw the SVG
+watch NAME:
+  while true; do \
+    inotifywait -e modify {{NAME}}.v; \
+    just draw {{NAME}}; \
+    {{VIEWER}} img/{{NAME}}.svg & \
+  done
+
+clear:
+  rm -f *.out *.vvp *.vcd *.json

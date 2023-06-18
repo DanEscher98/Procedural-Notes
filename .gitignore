@@ -81,3 +81,7 @@ Module.symvers
 Mkfile.old
 dkms.conf
 _*/
+
+# Others
+**/build/
+*.svg
