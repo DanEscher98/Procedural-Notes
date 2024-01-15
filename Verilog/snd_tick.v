@@ -1,11 +1,11 @@
 //full adder code: structural model
 `timescale 1ns/100ps //optional
-module snd_tick (a, b, out);
-  input a, b;
+module snd_tick (i_a, i_b, out);
+  input i_a, i_b;
   output out;
   wire s1;
-  not g0(s1, b);
-  nor g1(out, s1, a);
+  assign s1 = !i_b;
+  assign out = !(s1 || i_a);
 endmodule
 
 //***Testbench Module***

@@ -1,10 +1,10 @@
 //full adder code: structural model
 `timescale 1ns/100ps //optional
 module fa (
-  input wire i_a, i_b, i_c,
-  output wire o_sum, o_carry
+  input i_a, i_b, i_c,
+  output o_sum, o_carry
 );
-  wire s1, c1, c2; //internal
+  logic s1, c1, c2; //internal
 
   assign s1 = i_a ^ i_b;
   assign o_sum = s1 ^ i_c;

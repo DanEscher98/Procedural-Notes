@@ -1,6 +1,5 @@
 #include <cxxopts.hpp>
 #include <fmt/core.h>
-#include <nlohmann/json.hpp>
 #include "lib.hpp"
 
 class Args {

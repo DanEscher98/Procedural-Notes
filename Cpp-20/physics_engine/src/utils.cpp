@@ -4,7 +4,11 @@
 #include <vector>
 #include <random>
 #include <memory>
+#include <nlohmann/json.hpp>
+#include <SDL.h>
 #include "lib.hpp"
+
+using json = nlohmann::json;
 
 namespace {
   // A private function to return random alphanumeric strings
@@ -26,20 +30,17 @@ namespace {
   }
 }
 
-int write_file(int num_threds) {
-  auto file = std::make_shared<std::mutex>();
+int write_file(int num_threads) {
+  auto data_mutex = std::make_shared<std::mutex>();
   std::vector<std::thread> threads;
-  std::ofstream ofs("data/output.txt");
+  json data;
 
-  if (!ofs) {
-      fmt::print("Failed to open the file\n");
-      return 1;
-  }
-
-  for (int i = 0; i < num_threds; ++i) {
+  for (int i = 0; i < num_threads; ++i) {
     threads.emplace_back([&, i]() {
-      std::lock_guard<std::mutex> lock(*file);
-      ofs << fmt::format("Thread {}: {}\n", i, random_string(16));
+      auto ret_data = random_string(16);
+
+      std::lock_guard<std::mutex> lock(*data_mutex);
+      data["threads"][fmt::to_string(i)] = std::move(ret_data);
     });
   }
 
@@ -47,5 +48,16 @@ int write_file(int num_threds) {
     thread.join();
   }
 
+  std::ofstream data_file("data/output.json");
+  if (!data_file.is_open()) {
+      fmt::print("Failed to open the file\n");
+      return 1;
+  }
+  data_file << data.dump(4);
+
   return 0;
+}
+
+int mock(int num) {
+  return num * 2;
 }

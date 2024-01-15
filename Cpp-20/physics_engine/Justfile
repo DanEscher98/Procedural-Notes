@@ -10,7 +10,7 @@ tests:
   @cmake -S . -B build -DBUILD_TESTING=ON
   hyperfine -r 1 --show-output 'cmake --build build'
   @echo ""
-  @./target/unittests
+  @./target/UnitTests
 
 # generate 'compile_commands.json' for LSP
 cmds:
@@ -34,6 +34,7 @@ clean:
 deps:
   git clone https://github.com/fmtlib/fmt.git extern/fmt
   git clone https://github.com/jarro2783/cxxopts.git extern/cxxopts
+  git clone https://github.com/nlohmann/json.git extern/json
 
 watch:
   echo "watch"
