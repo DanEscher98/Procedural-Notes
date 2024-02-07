@@ -1,0 +1,30 @@
+set shell := ["bash", "-c"]
+container := "arm-workspace"
+engine := "sudo docker"
+platform := "--platform linux/arm/v7"
+editor := "lvim"
+
+# Build the Docker image
+image:
+  export DOCKER_CLI_EXPERIMENTAL=enabled;\
+  {{engine}} buildx build {{platform}} -t {{container}} -f Dockerfile .
+
+# Execute a command inside the container
+cmd command workdir="":
+  @{{engine}} run {{platform}} -v $(pwd)/{{workdir}}:/workspace:Z -u root {{container}} {{command}}
+
+# Compile a file according to its extension
+compile file:
+  @filename=$(basename {{file}}); name="${filename%.*}"; ext="${filename##*.}";\
+  mkdir -p target;\
+  case "$ext" in \
+    "arm") \
+      just cmd "as {{file}} -o target/$name.o";\
+      just cmd "ld target/$name.o -o target/$name.elf";;\
+    "c") just cmd "gcc {{file}} -o  target/$name.elf" ;;\
+    *) echo "Invalid file extension" ;;\
+  esac
+
+# Run an interactive container session
+container:
+  {{engine}} run {{platform}} --rm -it -v $(pwd)/:/workspace:Z {{container}}
