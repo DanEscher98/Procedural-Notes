@@ -19,11 +19,17 @@ compile file:
   mkdir -p target;\
   case "$ext" in \
     "arm") \
-      just cmd "as {{file}} -o target/$name.o";\
+      just cmd "as -ggdb {{file}} -o target/$name.o";\
       just cmd "ld target/$name.o -o target/$name.elf";;\
     "c") just cmd "gcc {{file}} -o  target/$name.elf" ;;\
     *) echo "Invalid file extension" ;;\
   esac
+
+# Compile and run a file
+run file compile="false":
+  @filename=$(basename {{file}}); name="${filename%.*}";\
+  if [ ! -f target/$name.elf ]; then just compile {{file}}; fi;\
+  just cmd "./target/$name.elf"
 
 # Run an interactive container session
 container:

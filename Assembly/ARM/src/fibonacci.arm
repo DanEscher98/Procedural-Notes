@@ -1,0 +1,42 @@
+  .section .text
+  .globl _start
+
+_start:
+  mov r0, #10          @ Set the number of Fibonacci numbers to generate
+  bl fibonacci         @ Call the Fibonacci function
+
+  mov r7, #1           @ Exit system call
+  mov r0, #0           @ Exit status code
+  svc #0               @ Invoke syscall
+
+fibonacci:
+  push {r4, r5, lr}    @ Save registers r4, r5, and link register lr to the stack
+
+  mov r4, #0           @ Initialize Fibonacci number n-1 to 0
+  mov r5, #1           @ Initialize Fibonacci number n to 1
+
+loop:
+  cmp r0, #0           @ Compare loop counter with 0
+  ble end_loop         @ If loop counter <= 0, end the loop
+
+  @ Output Fibonacci number (r5) to stdout
+  mov r0, #1           @ File descriptor 1: stdout
+  ldr r1, =output      @ Load address of the output format string
+  mov r2, #4           @ Length of the output format string
+  mov r7, #4           @ syscall number for sys_write
+  svc #0               @ invoke syscall
+
+  @ Calculate next Fibonacci number
+  add r6, r4, r5       @ r6 = r4 + r5 (next Fibonacci number)
+  mov r4, r5           @ Update r4 to hold previous Fibonacci number (n-1)
+  mov r5, r6           @ Update r5 to hold current Fibonacci number (n)
+  
+  sub r0, r0, #1       @ Decrement loop counter
+  b loop               @ Branch back to loop
+
+end_loop:
+  pop {r4, r5, pc}     @ Restore registers r4, r5, and return
+  bx lr                @ Return from subroutine
+
+output:
+  .asciz "%d\n"        @ Format string for printing Fibonacci numbers

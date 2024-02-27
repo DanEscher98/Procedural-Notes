@@ -20,3 +20,4 @@ message:
   .ascii "Hello, World!\n"
 
 len = . - message           @ Calculate the length of the message
+
